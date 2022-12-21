@@ -1,0 +1,127 @@
+<div class="container-fluid bg-primary">
+  <header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+    <h4> <li class="nav-item"><a href="#" class="nav-link active " aria-current="page">Loan Management System</a></li></h4>
+    </ul>
+  </header>
+</div>
+
+
+<button type="button" class="btn btn-light" type="submit" (click)="back()"><span class="bi bi-arrow-return-left"></span></button>
+<div id="main" class="p-4 p-md-4 border rounded-3 bg-light">
+  <h4>User Registration</h4>
+  <hr class="my-3">
+
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="firstname" class="col-form-label">First Name</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="firstname" class="form-control" aria-describedby="passwordHelpInline" pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,18}[a-zA-Z0-9]$"  required [(ngModel)]="user.firstname" #firstname="ngModel">
+      <span class="alert alert-danger" *ngIf="firstname.touched && firstname.errors">
+        <span *ngIf="firstname.errors['required']">
+          Firstname cannot be empty
+        </span>
+        <span *ngIf="firstname.errors['pattern']">
+          First Name is not valid
+         </span>
+      </span>
+    </div>
+  </div>
+  <br>
+
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="lastname" class="col-form-label">Last Name</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="lastname" class="form-control" aria-describedby="passwordHelpInline" pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,18}[a-zA-Z0-9]$" required  [(ngModel)]="user.lastname" #lastname="ngModel">
+      <span class="alert alert-danger" *ngIf="lastname.touched && lastname.errors">
+        <span *ngIf="lastname.errors['required']">
+          Lastname cannot be empty
+        </span>
+        <span *ngIf="lastname.errors['pattern']">
+          Last Name is not valid
+         </span>
+      </span>
+    </div>
+  </div>
+  <br>
+
+   <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="uname" class="col-form-label">User Name</label>
+      </div>
+      <div class="col-auto">
+        <input type="text" id="uname" class="form-control" aria-describedby="passwordHelpInline" pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){2,18}[a-zA-Z0-9]$" required  [(ngModel)]="user.username" #username="ngModel">
+        <span class="alert alert-danger" *ngIf="username.touched && username.errors">
+          <span *ngIf="username.errors['required']">
+            Username cannot be empty
+          </span>
+          <span *ngIf="username.errors['pattern']">
+            Username is not valid
+           </span>
+        </span>
+      </div>
+    </div>
+    <br>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="passwrd" class="col-form-label">Password</label>
+      </div>
+      <div class="col-auto">
+        <input type="password" id="passwrd" class="form-control" aria-describedby="passwordHelpInline" required maxlength="15" minlength="4"   [(ngModel)]="user.password" #password="ngModel">
+        <span class="alert alert-danger" *ngIf="password.touched && password.errors">
+          <span *ngIf="password.errors['required']">
+            Password cannot be empty
+          </span>
+          <span *ngIf="password.errors['minlength']">
+             Length should be atleast 4
+            </span>
+           <!--
+               <span *ngIf="password.errors['pattern']">
+             Password should have atleast one lowercase one uppercase one number and one special character
+            </span>
+           -->
+        </span>
+      </div>
+    </div>
+    <br>
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="cpasswrd" class="col-form-label">Confirm password</label>
+      </div>
+      <div class="col-auto">
+        <input type="password" id="cpasswrd" class="form-control" aria-describedby="passwordHelpInline" required maxlength="15" minlength="4"   [(ngModel)]="user.confirmpassword" #confirmpassword="ngModel">
+        <span class="alert alert-danger" *ngIf="confirmpassword.touched && confirmpassword.errors">
+          <span *ngIf="confirmpassword.errors['required']">
+            Password cannot be empty
+          </span>
+          <span *ngIf="confirmpassword.errors['minlength']">
+             Length should be atleast 4
+            </span>
+           <!--
+            <span *ngIf="confirmpassword.errors['pattern']">
+             Password should have atleast one lowercase one uppercase one number and one special character
+            </span>
+           --> 
+        </span>
+      </div>
+    </div>
+    <br>
+
+    <div class="row g-3 align-items-center">
+     
+      <input type="hidden" id="Loanid" [value]="user.role"  >
+     
+    
+  </div>
+  <hr class="my-3">
+  <div id="bottm">
+      <!-- <button class="w-45 btn btn-md btn-secondary" type="button" (click)="cancel()">Cancel</button>&nbsp;&nbsp; -->
+      <button class="w-49 btn btn-md btn-primary" type="submit" (click)="userRegister()">Register</button>
+
+      
+      </div>
+  </div>
+

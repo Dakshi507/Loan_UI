@@ -1,0 +1,41 @@
+<div class="container-fluid bg-primary">
+  <header class="d-flex justify-content-center py-3">
+    <ul class="nav nav-pills">
+    <h4> <li class="nav-item"><a href="#" class="nav-link active " aria-current="page">Loan Management System</a></li></h4>
+    </ul>
+  </header>
+</div>
+<br>
+
+
+<div id="main" class="p-4 p-md-4 border rounded-3 bg-light">
+    <small class="text-muted">Sign In</small>
+    <hr class="my-3">
+    <div class="form-floating mb-2">
+        User Name:
+      <input type="username" class="form-control" id="floatingInput" ngModel name="username" pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){0,18}[a-zA-Z0-9]$" required placeholder="" [(ngModel)]="userdto.username" #uname="ngModel">
+      <!-- <label for="floatingInput">Username</label> -->
+      <span class="alert alert-danger" *ngIf="uname.touched && uname.errors">
+        <span *ngIf="uname.errors['required']">
+          Username cannot be empty
+        </span>
+        <!-- <span *ngIf="uname.errors['pattern']">
+          Username is not valid
+         </span> -->
+      </span>
+    </div>
+    <div class="form-floating mb-2">
+        Password:
+        <input type="password" class="form-control" id = "floatingInput" ngModel name="password" pattern="" required placeholder=""[(ngModel)]="userdto.password" #password="ngModel">
+        <span class="alert alert-danger" *ngIf="password.touched && password.errors">
+          <span *ngIf="password.errors">Password is required</span>
+        </span>
+      
+      
+    </div>
+   
+    <button class="w-50 btn btn-md btn-primary" type="submit" (click)="login()">SIGN IN</button>
+    <hr class="my-3">
+    <small class="text-muted"><b>New User?</b></small><br><br>
+    <button class="w-50 btn btn-md btn-primary" type="submit" (click)="register()">Register</button>
+</div>

@@ -1,0 +1,73 @@
+<app-nav></app-nav>
+
+<!-- <div id="main" class="p-4 p-md-4 border rounded-3 bg-light">
+  <h4>Search Loan to update</h4>
+  <hr class="my-3">
+
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="loannumber" class="col-form-label">Entar Loan no</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" id="loannumber" class="form-control" required  >
+      
+    </div>
+    <div id="bottm">
+     
+      <button type="submit" >Search</button>
+      
+    </div>
+  </div>
+</div> -->
+<div id="main" class="p-4 p-md-4  bg-light">
+<div class=" align-items-center">
+
+  <div class="col-auto">
+    <input class ="form-control" type="text" name ="search" [(ngModel)] = "searchdata" autocomplete="off" placeholder="Enter First name or Last name or Loan number to search">
+    
+  </div>
+  </div>
+  <br>
+
+<!-- <div class="row g-3 align-items-center">
+<input class ="form-control" type="text" name ="search" [(ngModel)] = "searchdata" autocomplete="off" placeholder="Enter First or last name or loan no ">
+</div> -->
+<div class="container-fluid">
+    <div class="row">
+   <div class="col-xs-12" id="todays-table">
+    <table class="table table-hover">
+        <thead class="thead-dark">
+         <tr>
+          <th><p>First name</p></th>
+          <th><p>Last Name</p></th>
+          <th><p>Loan number</p></th>
+          <!-- <th>propertyAddress</th> -->
+          <th><p>LoanAmount</p></th>
+          <th><p>Loan Type</p></th>
+          <th><p>Loan term</p></th>
+          <!-- <th>userId</th> -->
+         
+         </tr>
+        </thead>
+        <tbody>
+       
+       
+        <tr *ngFor="let lon of loanlist  | filter:searchdata"> 
+          <td >{{lon.firstname}}</td>
+          <td>{{lon.lastname}}</td>
+
+          <td>{{lon.loannumber}}</td>
+          <td>{{lon.loanamount}}</td>
+          <td>{{lon.loantype}}</td>
+          <td>{{lon.loanterm}}</td> 
+        </tr> 
+        
+        </tbody>
+    </table>
+    
+    
+</div>
+</div>
+</div>
+  
+

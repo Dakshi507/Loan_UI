@@ -1,0 +1,136 @@
+
+<app-nav></app-nav>
+<button type="button" class="btn btn-light" type="submit" (click)="back()"><span class="bi bi-arrow-return-left"></span></button>
+<div id="main" class="p-4 p-md-4 border rounded-3 bg-light">
+    <h4>Add Loan</h4>
+    <hr class="my-3">
+    <input type="hidden" id="Loanid" [value]="loanDto.Loanid"  >
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="userid" class="col-form-label">UserId</label>
+      </div>
+      <div class="col-auto">
+        <input type="text" id="UserId" class="form-control" aria-describedby="passwordHelpInline" pattern="^[0-9]*$" required (ngModelChange)="valuechange($event)" #Userid="ngModel" [(ngModel)] ="loanDto.Userid"   >
+       <span class="alert alert-danger" *ngIf="Userid.errors && Userid.touched">
+        <span>Please enter valid UserId</span>
+       </span>
+        
+      </div>      
+    </div>
+    
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="firstname" class="col-form-label">First Name</label>
+      </div>
+      <div class="col-auto">
+          <select id="firstname" class="form-control" #firstname="ngModel" [(ngModel)] ="loanDto.Firstname">
+          <option [value]="userdata.firstname">{{userdata.firstname}}
+         </select>
+         
+      </div>
+    </div>
+
+    <div class="row g-3 align-items-center">
+      <div class="col-auto">
+        <label for="lastname" class="col-form-label">Last Name</label>
+      </div>
+      <div class="col-auto">
+        <select id="lastname" class="form-control"  #lastname="ngModel" [(ngModel)] ="loanDto.Lastname">
+          <option [value]="userdata.lastname">{{userdata.lastname}}
+        </select>
+    </div>
+       
+      
+    </div>
+       
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="Loanno" class="col-form-label">Loan Number</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="Loanno" class="form-control" aria-describedby="passwordHelpInline" required maxlength="15" minlength="4" pattern="^[0-9]*$" #loanno="ngModel" [(ngModel)] ="loanDto.Loannumber"  >
+          <span class="alert alert-danger" *ngIf="loanno.errors && loanno.touched">
+            <span *ngIf="loanno.errors['required']">  Loan number cannot be empty</span>
+            <span *ngIf="loanno.errors['minlength']">  Length should be atleast 5</span> 
+            <span *ngIf="loanno.errors['pattern']">  only Contains number</span> 
+          </span>
+        </div>
+      </div>
+     &nbsp;
+     
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="PropertyAddress" class="col-form-label">PropertyAddress</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="PropertyAddress" class="form-control" aria-describedby="passwordHelpInline" minlength="4"  required [(ngModel)]="loanDto.Propertyaddress" #propertyaddress="ngModel">
+          <span class="alert alert-danger" *ngIf="propertyaddress.touched && propertyaddress.errors">
+            <span *ngIf="propertyaddress.errors['required']">
+              Property Address cannot be empty
+            </span>
+            <span *ngIf="propertyaddress.errors['minlength']">
+              Property Address is not valid
+            </span>
+          </span>
+        </div>
+      </div>
+      <span>&nbsp;</span>
+      <div class="row g-3 align-items-center">
+        <div class="col-auto">
+          <label for="Loanamount" class="col-form-label">Loan Amount</label>
+        </div>
+        <div class="col-auto">
+          <input type="text" id="Loanamount" class="form-control" aria-describedby="passwordHelpInline" pattern="^[0-9]*$"  required [(ngModel)]="loanDto.Loanamount" #Loanamount="ngModel">
+          <span class="alert alert-danger" *ngIf="Loanamount.touched && Loanamount.errors">
+            <span *ngIf="Loanamount.errors['required']">
+             Loan Amount cannot be empty
+            </span>
+            <span *ngIf="Loanamount.errors['pattern']">
+              Loan Amount Only contains Number
+            </span>
+          </span>
+    
+        </div>
+      </div>
+      <span>&nbsp;</span>
+      <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="loantype" class="col-form-label">Loan type</label>
+          </div>
+          <div class="col-auto">
+            <input type="text" id="loantype" class="form-control" aria-describedby="passwordHelpInline"  pattern="^[a-zA-Z0-9](_(?!(\.|_))|\.(?!(_|\.))|[a-zA-Z0-9]){1,18}[a-zA-Z0-9]$" required [(ngModel)]="loanDto.Loantype" #Loantype="ngModel">
+          <span class="alert alert-danger" *ngIf="Loantype.touched && Loantype.errors">
+            <span *ngIf="Loantype.errors['required']">
+             Loan Amount cannot be empty
+            </span>
+            <span *ngIf="Loantype.errors['pattern']">
+              Loan Type is not valid
+            </span>
+          </span>
+          </div>
+        </div>
+        <span>&nbsp;</span>
+        
+      <div class="row g-3 align-items-center">
+          <div class="col-auto">
+            <label for="loanterm" class="col-form-label">Loan term</label>
+          </div>
+          <div class="col-auto">
+            <input type="loanterm" id="loanterm" class="form-control" aria-describedby="passwordHelpInline" #loanterm="ngModel" [(ngModel)] ="loanDto.Loanterm" required>
+            <span class="alert alert-danger" *ngIf="loanterm.errors && loanterm.touched">
+              Loan term cannot be empty
+            </span>
+          </div>
+      </div>
+    
+  
+  
+    <hr class="my-3">
+    <div id="bottm">  
+      <button class="w-49 btn btn-md btn-primary" type="submit" (click)="AddLoan()">Add</button>
+    </div>  
+       
+</div>
+  
+  
+  
