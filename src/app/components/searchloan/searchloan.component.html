@@ -1,0 +1,60 @@
+<app-nav></app-nav>
+<button type="button" class="btn btn-light" type="submit" (click)="back()"><span class="bi bi-arrow-return-left"></span></button>
+<div id="main" class="p-4 p-md-4 border rounded-3 bg-light">
+  <h4>Search Loan to update</h4>
+  <hr class="my-3">
+
+ 
+  <div class="row g-3 align-items-center">
+    <div class="col-auto">
+      <label for="loannumber" class="col-form-label">Entar Loan no</label>
+    </div>
+    <div class="col-auto">
+      <input type="text" #loannumber class="form-control" required  >
+      <!-- <input type="text"  (keyup)="inputvalue($event)"> -->
+      
+      
+    </div>
+
+    <div id="bottm">
+      <button type="submit" (click)="onSubmit(loannumber.value)">Update</button>
+      <!-- <button type="submit" >Search</button> -->
+      
+    </div>
+  </div>
+</div>
+<div class="container-fluid">
+  <div class="row">
+   <div class="col-xs-12" id="todays-table">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th>Loan number</th>
+        <th>propertyAddress</th>
+        <th>LoanAmount</th>
+        <th>Loan Type</th>
+        <th>Loan term</th>
+        <th>userId</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+        
+    <tr *ngFor="let lon of loanlist "> 
+          <td>{{lon.loannumber}}</td>
+          <td>{{lon.propertyaddress}}</td>
+          <td>{{lon.loanamount}}</td>
+          <td>{{lon.loantype}}</td>
+          <td>{{lon.loanterm}}</td>
+          <td>{{lon.userid}}</td>
+          <td><a [routerLink]="['../updateloan',lon.loannumber]">Edit</a>
+            
+          </td> 
+        </tr> 
+      </tbody>
+  </table>
+  </div>
+  </div>
+  </div>
+
+
